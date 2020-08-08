@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <form action="#" th:action="@{/insertar}"  th:object="${empleado}" method="post" class="col-sm-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Agregar empleado</h4>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="form-group">
+                        <label>Nombre y apellidos</label>
+                        <input type="text" th:field = "*{fullName} " class="form-control">
+                        <label>Teléfono</label>
+                        <input type="text" th:field=" *{phone} " class="form-control">
+
+                        <hr color="blue" size=3>
+                        <label>Categoria   </label>
+
+                        <select th:field=" *{categoria}">
+                            <option value="ENGINEER">ENGINEER</option>
+                            <option value="MANAGER">MANAGER</option>
+                            <option value="SALESMAN">SALESMAN</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Guardar" class="btn btn-info">
+                    <a href="/listar" class="btn btn-link">Regresar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

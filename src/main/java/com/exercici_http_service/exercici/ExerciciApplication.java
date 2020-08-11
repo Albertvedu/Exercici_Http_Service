@@ -28,17 +28,3 @@ public class ExerciciApplication implements CommandLineRunner {
         }
     }
 }
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//        // Inserción de 3 elementos de prueba
-//        template.execute("DROP TABLE Empleado IF EXISTS ");
-//        template.execute("CREATE TABLE Empleado(id INTEGER(11) PRIMARY KEY auto_increment, " +
-//                "fullName VARCHAR (255), phone VARCHAR (16), categoria ENUM  ENGINEER('Engineer', 30000),\n" +
-//                "     MANAGER('Manager', 40000),\n" +
-//                "     SALESMAN('Salesman', 50000),  salary DOUBLE )");
-//
-//        for (int i = 0; i < 3; i++) {
-//            template.update("INSERT INTO Empleado(fullName, phone, categoria, salary)values('Persona 000"+i+"', '932118833', 'Salesman, 22000')");
-//        }
-//    }

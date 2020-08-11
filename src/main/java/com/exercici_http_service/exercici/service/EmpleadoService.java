@@ -1,6 +1,7 @@
 package com.exercici_http_service.exercici.service;
 
 
+import com.exercici_http_service.exercici.model.Categorias;
 import com.exercici_http_service.exercici.model.Empleado;
 import com.exercici_http_service.exercici.repository.IEmpleado;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class EmpleadoService implements IEmpleadoService{
     public int editar(Empleado empleado) {
         repo.editar(empleado);
         return 0;
+    }
+
+    @Override
+    public List<Empleado> listByCategory(String categoria) {
+        return repo.listByCategory(categoria);
     }
 
     @Override

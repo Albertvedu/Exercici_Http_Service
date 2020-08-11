@@ -1,16 +1,25 @@
 package com.exercici_http_service.exercici.model;
 
+import javax.validation.constraints.*;
+
 public class Empleado  {
 
-
     private int id;
+
+    @Size(min = 3, max = 50, message="El campo tiene que tener entre 3 y 50 caracteres")
+    @NotBlank(message = "El campo no puede quedar vacio")
+    @Pattern(regexp = "[A-Za-z]+", message="Solo letras\n")
     private String fullName;
+
+    @NotBlank(message = "El campo no puede quedar vacio")
+    @Pattern(regexp = "^[6798]\\d{8}+", message="Teléfono No válido")
     private String phone;
     private Categorias categoria;
     private double salary;
 
 
     public Empleado() {
+
     }
 
     public Empleado(int id, String fullName, String phone, double salary, Categorias categoria) {

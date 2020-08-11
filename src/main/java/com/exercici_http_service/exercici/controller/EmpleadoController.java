@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -34,8 +35,10 @@ public class EmpleadoController {
     }
 
     @PostMapping("/insertar")
-    public String insertar(  Empleado empleado){
-
+    public String insertar(@Valid Empleado empleado, BindingResult result) {
+        if (result.hasErrors()) {
+            return "insertar";
+        }
         service.insertar(empleado);
         return "redirect:/listar";
     }
@@ -52,9 +55,25 @@ public class EmpleadoController {
         service.editar(empleado);
         return "redirect:/listar";
     }
+    @GetMapping("/searchByCategory")
+    //@RequestMapping(value = "/searchByCategory/{categoria}", method = RequestMethod.GET)
+    public String buscar( ){
+
+     //  model.addAttribute("categoria", categoria);
+//        System.out.println("aqui: .........2222...... " + categoria.getValue());
+        return "searchByCategory";
+    }
+    @GetMapping("/listarByCategory")
+    public String listarByCategory(Model model){
+         List<Empleado> empleado = service.listByCategory("ENGINEER");
+//        System.out.println("aqui: ............... " + value);
+       model.addAttribute("empleado", empleado);
+        return "index";
+    }
     @GetMapping("/eliminar/{id}")
     public String delete(@PathVariable int id ){
         service.delete(id);
         return "redirect:/listar";
     }
+
 }

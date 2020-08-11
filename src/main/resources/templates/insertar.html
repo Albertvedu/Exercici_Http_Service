@@ -18,8 +18,12 @@
                     <div class="form-group">
                         <label>Nombre y apellidos</label>
                         <input type="text" th:field = "*{fullName} " class="form-control">
+<!--                        <td th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</td><br>-->
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></small>
+
                         <label>Teléfono</label>
                         <input type="text" th:field=" *{phone} " class="form-control">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
 
                         <hr color="blue" size=3>
                         <label>Categoria   </label>

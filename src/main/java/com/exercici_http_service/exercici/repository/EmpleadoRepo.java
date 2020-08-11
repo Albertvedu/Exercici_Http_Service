@@ -2,14 +2,10 @@ package com.exercici_http_service.exercici.repository;
 
 import com.exercici_http_service.exercici.model.Categorias;
 import com.exercici_http_service.exercici.model.Empleado;
-import org.apache.commons.lang3.EnumUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.*;
 
 @Repository
@@ -61,6 +57,23 @@ public class EmpleadoRepo implements IEmpleado{
         String sql ="UPDATE empleado set fullName=?, phone =?, categoria=?, salary=? WHERE id=?";
         int resposta = template.update(sql, empleado.getFullName(), empleado.getPhone(), empleado.getCategoria().getValue(), empleado.getCategoria().getSalario(), empleado.getId() );
         return resposta;
+    }
+
+
+    @Override
+    public List<Empleado> listByCategory(String category) {
+        System.out.println("aqui: .........2222...... " + category);
+        String sql = "SELECT * FROM EMPLEADO WHERE categoria = 'SALESMAN'";
+        List<Empleado> empleados= template.query(sql, (rs, rowNum) ->
+                new Empleado(
+                        rs.getInt("id"),
+                        rs.getString("fullName"),
+                        rs.getString("phone"),
+                        rs.getDouble("salary"),
+                        Categorias.valueOf(rs.getString("categoria")))
+        );
+
+        return empleados;
     }
 
     @Override

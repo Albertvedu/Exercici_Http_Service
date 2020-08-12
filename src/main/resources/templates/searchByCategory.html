@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container mt-4">
-    <form action="#" th:action="@{/searchByCategory}"  method="GET" class="col-sm-5">
+    <form  action="/searchByCategory"  method="GET" class="col-sm-5">
         <div class="card">
             <div class="card-header">
                 <h4>Buscar por categoria</h4>
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label>Categoria   </label>
 
-                    <select >
+                    <select th:name="categoria" >
                         <option value="ENGINEER">ENGINEER</option>
                         <option value="MANAGER">MANAGER</option>
                         <option value="SALESMAN">SALESMAN</option>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="/listarByCategory" class="btn btn-warning">Buscar</a>
+                <a  th:href="@{|/listarByCategory/ ${categoria}}" class="btn btn-warning">Buscar</a>
                 <a href="/listar" class="btn btn-link">Regresar</a>            </div>
         </div>
     </form>

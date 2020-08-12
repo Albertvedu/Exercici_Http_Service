@@ -55,21 +55,28 @@ public class EmpleadoController {
         service.editar(empleado);
         return "redirect:/listar";
     }
-    @GetMapping("/searchByCategory")
-    //@RequestMapping(value = "/searchByCategory/{categoria}", method = RequestMethod.GET)
-    public String buscar( ){
+    //@GetMapping("/searchByCategory")
+    @RequestMapping("/searchByCategory")
+    public String buscar( @RequestParam(value = "categoria", required = false ) String categoria, Model model){
+        model.addAttribute("categoria", categoria);
+        //List<Empleado> empleado = service.listByCategory(categoria);
 
-     //  model.addAttribute("categoria", categoria);
-//        System.out.println("aqui: .........2222...... " + categoria.getValue());
+        model.addAttribute("categoria", categoria);
+        System.out.println("categoria111:..... " + categoria);
         return "searchByCategory";
     }
-    @GetMapping("/listarByCategory")
-    public String listarByCategory(Model model){
-         List<Empleado> empleado = service.listByCategory("ENGINEER");
-//        System.out.println("aqui: ............... " + value);
-       model.addAttribute("empleado", empleado);
+    @GetMapping("/listarByCategory/{categoria}")
+    public String
+    listarByCategory(@Validated String categoria, Model model){
+        System.out.println("categoria:..... " + categoria);
+        List<Empleado> empleado = service.listByCategory(categoria);
+
+//        model.addAttribute("empleado", empleado);
+//        System.out.println("bla bla bla-.....: " + empleado.getCategoria().getValue());
+//        System.out.println("bla bla bla-.....: " + empleado.getFullName());
         return "index";
     }
+
     @GetMapping("/eliminar/{id}")
     public String delete(@PathVariable int id ){
         service.delete(id);

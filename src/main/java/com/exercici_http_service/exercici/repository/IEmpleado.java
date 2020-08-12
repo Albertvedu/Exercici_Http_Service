@@ -13,4 +13,5 @@ public interface IEmpleado {
     int editar ( Empleado empleado);
     List<Empleado> listByCategory(String categoria);
     void delete ( int id);
+
 }

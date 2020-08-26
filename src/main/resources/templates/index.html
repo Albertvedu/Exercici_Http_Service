@@ -7,8 +7,9 @@
 </head>
 <body>
 <div class="container mt-4">
-    <a href="nuevo" class="btn btn-warning">Agregar Nuevo</a>
-    <a href="searchByCategory" class="btn btn-warning">Buscar por categoria </a>
+    <a href="/nuevo" class="btn btn-warning">Agregar Nuevo</a>
+    <a href="/prueba" class="btn btn-warning">Buscar por categoria </a>
+    <a href="/listar" class="btn btn-warning">Regresar </a>
     <table class="table">
         <thead>
         <tr>
@@ -30,7 +31,7 @@
             <td th:text="${empleado.categoria.getSalario()}"></td>
             <td>
                 <a th:href="@{|/editar/ ${empleado.id}}" class="btn btn-warning">Editar</a>
-                <a th:onclick="eliminar([[${empleado.id}]])" class="btn btn-danger">Eliminar</a>
+                <a th:href="@{|/eliminar/ ${empleado.id}}" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>

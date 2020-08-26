@@ -62,8 +62,8 @@ public class EmpleadoRepo implements IEmpleado{
 
     @Override
     public List<Empleado> listByCategory(String category) {
-        System.out.println("aqui: .........2222...... " + category);
-        String sql = "SELECT * FROM EMPLEADO WHERE categoria = 'SALESMAN'";
+        System.out.println("aqui: .........repo...... " + category);
+        String sql = "SELECT * FROM EMPLEADO WHERE categoria = 'DEVELOPER'"; // Provisional ?
         List<Empleado> empleados= template.query(sql, (rs, rowNum) ->
                 new Empleado(
                         rs.getInt("id"),

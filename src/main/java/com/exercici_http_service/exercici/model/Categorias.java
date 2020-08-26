@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 public enum Categorias {
-    ENGINEER("Engineer", 30000),
-    MANAGER("Manager", 40000),
-    SALESMAN("Salesman", 50000);
+    DEVELOPER("Developer", 30000),
+    DESIGNER("Designer", 40000),
+    MANAGER("Manager", 50000);
 
     private final String value;
     private final int salario;

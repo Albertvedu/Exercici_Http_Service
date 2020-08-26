@@ -16,14 +16,16 @@
                 <div class="form-group">
                     <label>Categoria   </label>
 
-                    <select th:name="categoria" >
-                        <option value="ENGINEER">ENGINEER</option>
-                        <option value="MANAGER">MANAGER</option>
-                        <option value="SALESMAN">SALESMAN</option>
+                    <select th:name="  categoria" >
+                        <option value="">Seleccionar categoría</option>
+                        <option value="DEVELOPER">Developer</option>
+                        <option value="DESIGNER">Designer</option>
+                        <option value="MANAGER">Manager</option>
                     </select>
                 </div>
             </div>
             <div class="card-footer">
+
                 <a  th:href="@{|/listarByCategory/ ${categoria}}" class="btn btn-warning">Buscar</a>
                 <a href="/listar" class="btn btn-link">Regresar</a>            </div>
         </div>

@@ -13,7 +13,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping
@@ -55,30 +59,22 @@ public class EmpleadoController {
         service.editar(empleado);
         return "redirect:/listar";
     }
-    //@GetMapping("/searchByCategory")
-    @RequestMapping("/searchByCategory")
-    public String buscar( @RequestParam(value = "categoria", required = false ) String categoria, Model model){
-        model.addAttribute("categoria", categoria);
-        //List<Empleado> empleado = service.listByCategory(categoria);
 
-        model.addAttribute("categoria", categoria);
-        System.out.println("categoria111:..... " + categoria);
-        return "searchByCategory";
+    @GetMapping("/prueba")
+    public String prueba( Empleado empleado ){
+        return "prueba";
     }
-    @GetMapping("/listarByCategory/{categoria}")
-    public String
-    listarByCategory(@Validated String categoria, Model model){
-        System.out.println("categoria:..... " + categoria);
-        List<Empleado> empleado = service.listByCategory(categoria);
 
-//        model.addAttribute("empleado", empleado);
-//        System.out.println("bla bla bla-.....: " + empleado.getCategoria().getValue());
-//        System.out.println("bla bla bla-.....: " + empleado.getFullName());
+    @GetMapping("/listarByCategory")
+    public String listarByCategory(@Validated String categoria, Model model){
+        List<Empleado> empleados = service.listar();
+        List<Empleado> empleadosByCategory = empleados.stream().filter(x -> x.getCategoria().getValue().toLowerCase().contains(categoria.toLowerCase())).collect(Collectors.toList());
+        model.addAttribute("empleado", empleadosByCategory);
         return "index";
     }
 
     @GetMapping("/eliminar/{id}")
-    public String delete(@PathVariable int id ){
+    public String delete(@PathVariable ("id") Integer id ){
         service.delete(id);
         return "redirect:/listar";
     }

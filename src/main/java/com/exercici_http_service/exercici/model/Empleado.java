@@ -8,7 +8,7 @@ public class Empleado  {
 
     @Size(min = 3, max = 50, message="El campo tiene que tener entre 3 y 50 caracteres")
     @NotBlank(message = "El campo no puede quedar vacio")
-    @Pattern(regexp = "[A-Za-z0-9]+", message="Solo letras o números\n")
+    @Pattern(regexp = "[A-Za-z 0-9]+", message="Solo letras o números\n")
     private String fullName;
 
     @NotBlank(message = "El campo no puede quedar vacio")

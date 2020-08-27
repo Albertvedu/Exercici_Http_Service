@@ -1,23 +1,18 @@
 package com.exercici_http_service.exercici.controller;
 
 
-import com.exercici_http_service.exercici.model.Categorias;
 import com.exercici_http_service.exercici.model.Empleado;
 import com.exercici_http_service.exercici.service.IEmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 @RequestMapping
@@ -60,9 +55,9 @@ public class EmpleadoController {
         return "redirect:/listar";
     }
 
-    @GetMapping("/prueba")
+    @GetMapping("/buscar")
     public String prueba( Empleado empleado ){
-        return "prueba";
+        return "buscar";
     }
 
     @GetMapping("/listarByCategory")
